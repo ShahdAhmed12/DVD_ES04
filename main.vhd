@@ -200,7 +200,6 @@ Win <='1';
 
 elsif(Px + Vx <= "00000000000") then
 Px <= "00000000000";
-
 Collision <= '1';
 Vx <= (not Vx)+1;
 elsif(Px + Vx >= "01001100000")then
@@ -216,27 +215,39 @@ Collision <= '1';
 Py <= "0111001100";
 Vy <= (not Vy)+1;
 elsif (UpButton = '0' and Vy /= "01111") then
+if(Vy + 1/= "00000")then
 Vy <= Vy + 1;
-
+else
+Vy <= "00001";
+end if;
 Collision <= '0';
 Px <= Px + Vx;
 Py <= Py + Vy;
 elsif(DownButton = '0' and Vy /= "10001") then
+if(Vy - 1 /= "00000")then
 Vy <= Vy - 1;
-
+else
+Vy <= "11111";
+end if;
 Collision <= '0';
 Px <= Px + Vx;
 Py <= Py + Vy;
 elsif(RightButton = '0' and Vx /= "01111") then
+if(Vx + 1 /= "00000")then
 Vx <= Vx + 1;
-
+else
+Vx <= "00001";
+end if;
 Collision <= '0';
 Px <= Px + Vx;
 Py <= Py + Vy;
 
 elsif(LeftButton = '0' and Vx /= "10001") then
+if(Vx - 1 /=0) then
 Vx <= Vx - 1;
-
+else
+Vx <= "11111";
+end if;
 Collision <= '0';
 Px <= Px + Vx;
 Py <= Py + Vy;
